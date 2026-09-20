@@ -1,0 +1,134 @@
+{
+  "proved_at": "2026-09-20T09:03:31.049Z",
+  "network": "genlayer testnet asimov",
+  "contract": "0x6776ece05607a55228E7fa3b5cbb661279c0D90B",
+  "condition": "the page states that the security advisory has been published",
+  "met_url": "https://raw.githubusercontent.com/JspIIV/sealedrelease/master/docs/advisory-2026-001-published.txt",
+  "embargo_url": "https://raw.githubusercontent.com/JspIIV/sealedrelease/master/docs/advisory-2026-002-embargoed.txt",
+  "seal0": {
+    "id": "0",
+    "owner": "0x80519c53f10d731e4ff83a7d9acd69cf98da6258",
+    "created_at": "2026-09-20T09:00:34+00:00",
+    "condition": "the page states that the security advisory has been published",
+    "url": "https://raw.githubusercontent.com/JspIIV/sealedrelease/master/docs/advisory-2026-001-published.txt",
+    "algo": "sha256",
+    "digest": "8a665e7adac0e8c67fadbf2882ec6c544b6b525cbfc60f998af3831abb895d0f",
+    "status": "REVEALED",
+    "checks": 1,
+    "decision": "MET",
+    "reason": "The page explicitly states the security advisory status as PUBLISHED, directly confirming the stated condition that the security advisory has been published.",
+    "quote": "Status: PUBLISHED",
+    "released_at": "2026-09-20T09:01:20+00:00",
+    "secret": "vault key: 8842-QORItaz-open-on-disclosure",
+    "revealed_by": "0x80519c53f10d731e4ff83a7d9acd69cf98da6258",
+    "revealed_at": "2026-09-20T09:02:00+00:00"
+  },
+  "seal1": {
+    "id": "1",
+    "owner": "0x80519c53f10d731e4ff83a7d9acd69cf98da6258",
+    "created_at": "2026-09-20T09:01:03+00:00",
+    "condition": "the page states that the security advisory has been published",
+    "url": "https://raw.githubusercontent.com/JspIIV/sealedrelease/master/docs/advisory-2026-002-embargoed.txt",
+    "algo": "sha256",
+    "digest": "b36f72b5184544405d7067f68f430484a82887de506dd0557da8442c6ad0e8ce",
+    "status": "SEALED",
+    "checks": 1,
+    "decision": "NOT_MET",
+    "reason": "The page explicitly states that the advisory has not been published.",
+    "quote": "Published: not yet",
+    "released_at": "",
+    "secret": "",
+    "revealed_by": "",
+    "revealed_at": ""
+  },
+  "size": {
+    "total": 2,
+    "sealed": 1,
+    "releasable": 0,
+    "revealed": 1
+  },
+  "checks": [
+    {
+      "label": "two records were sealed",
+      "ok": true
+    },
+    {
+      "label": "checking the published page returns MET",
+      "ok": true
+    },
+    {
+      "label": "and that record becomes releasable",
+      "ok": true
+    },
+    {
+      "label": "a wrong secret does not open a releasable record",
+      "ok": true
+    },
+    {
+      "label": "the matching secret opens it",
+      "ok": true
+    },
+    {
+      "label": "and the opened secret is readable",
+      "ok": true
+    },
+    {
+      "label": "checking the embargoed page returns NOT_MET",
+      "ok": true
+    },
+    {
+      "label": "and that record stays sealed",
+      "ok": true
+    },
+    {
+      "label": "reveal on a not-releasable record does nothing",
+      "ok": true
+    },
+    {
+      "label": "the register counts one revealed and one sealed",
+      "ok": true
+    }
+  ],
+  "transcript": [
+    "Sealed Release, proven on GenLayer Asimov",
+    "  contract 0x6776ece05607a55228E7fa3b5cbb661279c0D90B",
+    "",
+    "  sealed #0 against the published page (24s)",
+    "  sealed #1 against the embargoed page (12s)",
+    "",
+    "checking #0 (published advisory)...",
+    "  checked #0 (24s)",
+    "  decision MET, status RELEASABLE",
+    "  reason: The page explicitly states the security advisory status as PUBLISHED, directly confirming the stated condition that the security advisory has been published.",
+    "",
+    "trying #0 with a WRONG secret...",
+    "  status after wrong secret: RELEASABLE",
+    "revealing #0 with the correct secret...",
+    "  revealed #0 (24s)",
+    "  revealed secret: vault key: 8842-QORItaz-open-on-disclosure",
+    "",
+    "checking #1 (embargoed advisory)...",
+    "  checked #1 (36s)",
+    "  decision NOT_MET, status SEALED",
+    "  reason: The page explicitly states that the advisory has not been published.",
+    "",
+    "trying to reveal #1 while it is still sealed...",
+    "  (reveal transient, wait 8s)",
+    "  status of #1 after reveal attempt: SEALED",
+    "",
+    "register: {\"total\":2,\"sealed\":1,\"releasable\":0,\"revealed\":1}",
+    "",
+    "  ok   two records were sealed",
+    "  ok   checking the published page returns MET",
+    "  ok   and that record becomes releasable",
+    "  ok   a wrong secret does not open a releasable record",
+    "  ok   the matching secret opens it",
+    "  ok   and the opened secret is readable",
+    "  ok   checking the embargoed page returns NOT_MET",
+    "  ok   and that record stays sealed",
+    "  ok   reveal on a not-releasable record does nothing",
+    "  ok   the register counts one revealed and one sealed",
+    "",
+    "10 checks. It opened only what its condition allowed."
+  ]
+}

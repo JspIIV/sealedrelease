@@ -1,0 +1,28 @@
+{
+  "name": "sealedrelease",
+  "version": "1.0.0",
+  "description": "**A secret that opens only when a stated fact comes true, judged from live evidence and verified by a hash.**",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JspIIV/sealedrelease.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "bugs": {
+    "url": "https://github.com/JspIIV/sealedrelease/issues"
+  },
+  "homepage": "https://github.com/JspIIV/sealedrelease#readme",
+  "dependencies": {
+    "ethers": "^6.17.0",
+    "genlayer-js": "^1.1.8"
+  }
+}
