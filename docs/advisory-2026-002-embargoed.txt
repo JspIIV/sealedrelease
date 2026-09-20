@@ -1,0 +1,8 @@
+Security Advisory GLSA-2026-002
+
+Status: EMBARGOED
+Published: not yet
+
+This advisory is under coordinated disclosure and has NOT been published. The
+details are withheld until the embargo lifts and no fix has been released. This
+page will be updated when the advisory becomes public.

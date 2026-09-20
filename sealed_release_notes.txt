@@ -1,0 +1,9 @@
+A secret kept for a condition is a promise nobody can audit: release these files if I am arrested, publish this exploit once the fix ships. Today it lives in a person or a server that can open it early, refuse to, or vanish.
+
+Sealed Release holds no secret and watches no world. seal(digest, condition, url) commits only the SHA-256 digest of the secret, the condition in plain words, and the page where it would come true. The owner is the caller.
+
+check(id), open to anybody, fetches that page itself and asks a validator round one question: is the condition true now? On MET the record turns RELEASABLE. reveal(id, secret) then works only if sha256(secret) matches the committed digest, verified in code.
+
+It never opens on silence: an unreachable page is CANNOT_TELL. It never opens on a guess: the secret is never on chain until due. Other contracts read status(id) to settle on top.
+
+Proven on Asimov: a page saying an advisory is published opens; one saying it is embargoed stays sealed.

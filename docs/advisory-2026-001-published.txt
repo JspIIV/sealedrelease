@@ -1,0 +1,9 @@
+Security Advisory GLSA-2026-001
+
+Status: PUBLISHED
+Published: 2026-09-20
+
+The security advisory has been published. The vulnerability is now publicly
+disclosed and a fix is available in release v2.3.1. Operators should upgrade
+without delay. Full technical details and the remediation steps are included
+below the fold.
