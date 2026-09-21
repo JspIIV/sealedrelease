@@ -30,8 +30,8 @@ A composable release gate other contracts settle on: an escrow that pays when a 
 
 ## Live
 
-- **Contract (GenLayer Asimov):** `0x6776ece05607a55228E7fa3b5cbb661279c0D90B`
-- Explorer: https://explorer-asimov.genlayer.com/address/0x6776ece05607a55228E7fa3b5cbb661279c0D90B
+- **Contract (GenLayer Asimov):** `0xda93C39D82684E150fFd3ba1E57B8ebf6Aa75032`
+- Explorer: https://explorer-asimov.genlayer.com/address/0xda93C39D82684E150fFd3ba1E57B8ebf6Aa75032
 
 ## Proven on Asimov
 
@@ -44,8 +44,8 @@ See `results/proved.json` for the transcript.
 ## Try it
 
 ```
-genlayer call 0x6776ece05607a55228E7fa3b5cbb661279c0D90B size
-genlayer call 0x6776ece05607a55228E7fa3b5cbb661279c0D90B status --args '"0"'
+genlayer call 0xda93C39D82684E150fFd3ba1E57B8ebf6Aa75032 size
+genlayer call 0xda93C39D82684E150fFd3ba1E57B8ebf6Aa75032 status --args '"0"'
 ```
 
 ## Where it stops, plainly
