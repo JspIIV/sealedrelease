@@ -286,8 +286,10 @@ class SealedRelease(gl.Contract):
         """Open a releasable record by presenting the secret, checked against the sealed digest.
 
         Deterministic: the contract hashes the secret and compares it to the digest
-        committed at seal time. A record that is not releasable, or a secret that
-        does not match, changes nothing and takes nothing.
+        committed at seal time. A record that is not releasable, a secret longer than
+        the stored maximum, or a secret that does not match, changes nothing and takes
+        nothing. An accepted secret is stored in full, exactly as it was hashed, so the
+        disclosed value always matches the committed digest.
         """
         sid = str(seal_id).strip()
         stored = self.items.get(sid, None)
@@ -300,13 +302,23 @@ class SealedRelease(gl.Contract):
             return json.dumps({"ok": False,
                                "error": "not releasable yet; the condition has not been met",
                                "status": record["status"]})
+        # Refuse an over-long secret before touching state, rather than store a
+        # clipped copy: the whole point is that the disclosed value hashes to the
+        # committed digest, and a clipped value would not. An accepted secret is
+        # then stored in full, exactly as it was hashed.
+        if len(str(secret)) > MAX_SECRET:
+            return json.dumps({"ok": False,
+                               "error": "the secret exceeds the " + str(MAX_SECRET)
+                                        + " character maximum this contract stores, so reveal is"
+                                        + " refused rather than disclosing a value that would not"
+                                        + " match the committed digest"})
         computed = hashlib.sha256(str(secret).encode("utf-8")).hexdigest()
         if computed != record["digest"]:
             return json.dumps({"ok": False,
                                "error": "the secret does not match the sealed digest"})
 
         record["status"] = REVEALED
-        record["secret"] = _clip(str(secret), MAX_SECRET)
+        record["secret"] = str(secret)
         record["revealed_by"] = gl.message.sender_address.as_hex.lower()
         record["revealed_at"] = _now_iso()
         self.items[sid] = json.dumps(record)
